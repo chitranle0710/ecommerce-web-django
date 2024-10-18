@@ -8,6 +8,9 @@ class Category(models.Model):
 	def __str__(self):
 		return self.name
 
+	# class Meta:
+	# 	vebose_name_plural = 'categories'
+
 class Customer(models.Model):
 	first_name = models.CharField(max_length = 50)
 	last_phone = models.CharField(max_length = 50)
