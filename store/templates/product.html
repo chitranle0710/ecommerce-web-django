@@ -35,9 +35,7 @@
                     <a href="{% url 'home' %}" class="btn btn-secondary mt-3">Home</a>
                     <br/>
                     <br/>
-                    <button type="button" value="{{ product.id }}" class="btn btn-secondary add-to-cart" id ="add-cart">Add To Cart</button>
-
-
+                    <button type="button" value="{{ product.id }}" class="btn btn-secondary" id="add-cart">Add To Cart</button>
                 </div>
             </div>
         </div>
@@ -50,32 +48,36 @@
                 <br/>
                 <br/>
                 <br/>
+
 <script>
-    $(document).on('click', '#add-cart', function(e) {
-        e.preventDefault();
+$(document).on('click', '#add-cart', function(e) {
+    e.preventDefault();
+    $.ajax({
+        type: 'POST',
+        url: '{% url 'cart_add' %}',
+        data: {
+    product_id: $('#add-cart').val(),
+    csrfmiddlewaretoken: '{{ csrf_token }}',
+    action: 'post'
+        },
 
-        // Get the product ID from the button's value attribute
-        var product_id = $(this).val();
-        
-        // Make the AJAX request
-        $.ajax({
-            type: 'POST',
-            url: '{% url 'cart_add' %}',  // Django URL for the 'cart_add' view
-            data: {
-                product_id: $('#add-cart').val(),  
-                csrfmiddlewaretoken: '{{ csrf_token }}',  // CSRF token for security
-                action: 'post'  // Define action type
-            },
+        success: function(json){
+            //console.log(json)
+            document.getElementById("cart_quantity").textContent = json.qty
+        },
 
-            success: function(response) {
-                alert(response['Product Name'] + ' has been added to the cart.');
-            },
+        error: function(xhr, errmsg, err){
 
-            error: function(xhr, errmsg, err) {
-                alert('Failed to add product to cart: ' + errmsg);
-            }
-        });
+        }
+
+
     });
+
+
+
+})
+
+
 </script>
 
 
