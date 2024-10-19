@@ -15,22 +15,23 @@ class Cart:
         # Ensure that self.cart is assigned to the existing or new cart
         self.cart = cart
 
-    def add(self, product):
-        product_id = str(product.id)  # Use string for consistency
+    def add(self, product, quantity):
+        product_id = str(product.id)  # Convert product ID to string to use as key
 
         if product_id in self.cart:
-            # Increment the quantity if already in the cart
-            self.cart[product_id]['quantity'] += 1
+            # If product is already in the cart, increment the quantity
+            self.cart[product_id]['quantity'] += quantity
         else:
-            # Add new product with initial quantity
+            # If product is not in the cart, add it with the specified quantity
             self.cart[product_id] = {
                 'price': str(product.price),
-                'quantity': 1,  # Set initial quantity to 1
+                'quantity': quantity,
                 'name': product.name,
                 'sale_price': str(product.sale_price) if product.is_sale else None
             }
 
-        # Mark the session as modified to ensure changes are saved
+        # Mark the session as modified to ensure the cart is saved
+        self.session['cart'] = self.cart
         self.session.modified = True
 
     def __len__(self):
