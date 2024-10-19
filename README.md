@@ -27,8 +27,7 @@ this project is a web application built using django, a high-level python web fr
 
 1. **clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/yourproject.git
-   cd yourproject
+   git clone https://github.com/chitranle0710/ecommerce-web-django.git
 2. **Create a virtual environment:
    `python -m venv env`
 3. **Activate the virtual environment**:
