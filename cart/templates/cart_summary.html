@@ -85,12 +85,12 @@ strike {
         <div class="row justify-content-center">
     <div class="col-md-2">Quantity:</div>
                 <div class="col-md-2">
-                <select class="form-select" id="qty-cart">
+                <select class="form-select form-select-sm" id="select{{product.id}}">
     <!-- Loop through the quantities dictionary -->
     {% for key, value in quantities.items %}
         <!-- Check if the current product ID matches the key from the quantities dictionary -->
         {% if key == product.id|stringformat:"s" %}
-            <option selected>{{ value.quantity }}</option>
+            <option selected>{{ value }}</option>
         {% endif %}
     {% endfor %}
     
@@ -104,6 +104,9 @@ strike {
                 </div>
             </div>
             <br/><br/>
+            <a href="{% url 'home'%}" class="btn btn-secondary">Home</a>
+        <button type="button" data-index="{{product.id}}" class="btn btn-secondary update-cart">Update</button>
+        <button type="button" data-index="{{product.id}}" class="btn btn-danger delete-product">Remove</button>
                 </div>
             </div>
         </div>
@@ -120,5 +123,36 @@ strike {
     <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
     {% endif %}
 </div>
+
+<script>
+// Update Cart
+$(document).on('click', '.update-cart', function(e){
+    e.preventDefault();
+    // grab the product id
+    var productid = $(this).data('index');
+
+    $.ajax({
+    type: 'POST',
+    url: '{% url 'cart_update' %}',
+    data: {
+      product_id: $(this).data('index'),
+      product_qty: $('#select' + productid + ' option:selected').text(),
+      csrfmiddlewaretoken: '{{ csrf_token }}',
+      action: 'post'
+    },
+    success: function(json){
+        console.log(json)
+    },
+
+    error: function(xhr, errmsg, err){
+
+    }
+
+
+    });
+
+})
+
+</script>
 
 {% endblock %}

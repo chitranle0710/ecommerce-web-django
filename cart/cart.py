@@ -16,26 +16,18 @@ class Cart:
         self.cart = cart
 
     def add(self, product, quantity):
-        product_id = str(product.id)  # Convert product ID to string to use as key
-
+        product_id = str(product.id)
+        product_qty = str(quantity)
+        # Logic
         if product_id in self.cart:
-            # If product is already in the cart, increment the quantity
-            self.cart[product_id]['quantity'] += quantity
+            pass
         else:
-            # If product is not in the cart, add it with the specified quantity
-            self.cart[product_id] = {
-                'price': str(product.price),
-                'quantity': quantity,
-                'name': product.name,
-                'sale_price': str(product.sale_price) if product.is_sale else None
-            }
+            self.cart[product_id] = int(product_qty)
 
-        # Mark the session as modified to ensure the cart is saved
-        self.session['cart'] = self.cart
         self.session.modified = True
 
     def __len__(self):
-        return sum(item['quantity'] for item in self.cart.values())
+        return len(self.cart)
 
 
     def get_prods(self):
@@ -47,6 +39,21 @@ class Cart:
     def get_quants(self):
         quantities = self.cart
         return quantities
+
+    def update(self, product, quantity):
+        product_id = str(product)
+        product_qty = int(quantity)
+
+        # Get cart
+        ourcart = self.cart
+        # Update Dictionary/cart
+        ourcart[product_id] = product_qty
+
+        self.session.modified = True
+
+
+        thing = self.cart
+        return thing
 
 
 
