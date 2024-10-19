@@ -5,10 +5,11 @@ from .cart import Cart
 
 # Create your views here.
 def cart_summary(request):
+    # Get the cart
     cart = Cart(request)
     cart_products = cart.get_prods
-
-    return render(request, 'cart_summary.html', {"cart_products": cart_products})
+    quantities = cart.get_quants
+    return render(request, "cart_summary.html", {"cart_products":cart_products, "quantities":quantities})
 
 def cart_add(request):
        # Get the cart

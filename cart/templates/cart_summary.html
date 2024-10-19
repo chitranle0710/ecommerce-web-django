@@ -82,8 +82,28 @@ strike {
                         {{ product.price }} VND
                     {% endif %}
                     <br/><br/>
-                    TEST
-                    <br/><br/>
+        <div class="row justify-content-center">
+    <div class="col-md-2">Quantity:</div>
+                <div class="col-md-2">
+                <select class="form-select" id="qty-cart">
+    <!-- Loop through the quantities dictionary -->
+    {% for key, value in quantities.items %}
+        <!-- Check if the current product ID matches the key from the quantities dictionary -->
+        {% if key == product.id|stringformat:"s" %}
+            <option selected>{{ value.quantity }}</option>
+        {% endif %}
+    {% endfor %}
+    
+    <!-- Additional options if no match was found -->
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+</select>
+                </div>
+            </div>
+            <br/><br/>
                 </div>
             </div>
         </div>
@@ -97,7 +117,7 @@ strike {
         <p>Looks like you haven't added any products yet.</p>
         <a href="{% url 'home' %}" class="btn btn-primary btn-sm">Start Shopping</a>
     </div>
-    <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
     {% endif %}
 </div>
 

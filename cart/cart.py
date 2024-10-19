@@ -4,15 +4,15 @@ class Cart:
         self.session = request.session
         # Get request
         self.request = request
-
-        # Get the current cart from the session, or create a new one if it doesn't exist
+        # Get the current session key if it exists
         cart = self.session.get('session_key')
 
-        if cart is None:
-            # Initialize the cart if it doesn't exist
+        # If the user is new, no session key!  Create one!
+        if 'session_key' not in request.session:
             cart = self.session['session_key'] = {}
 
-        # Ensure that self.cart is assigned to the existing or new cart
+
+        # Make sure cart is available on all pages of site
         self.cart = cart
 
     def add(self, product, quantity):
@@ -43,6 +43,10 @@ class Cart:
     	products = Product.objects.filter(id__in=product_ids)
 
     	return products
+
+    def get_quants(self):
+        quantities = self.cart
+        return quantities
 
 
 
