@@ -29,10 +29,10 @@ this project is a web application built using django, a high-level python web fr
    ```bash
    git clone https://github.com/chitranle0710/ecommerce-web-django.git
 2. **Create a virtual environment:
-   `python -m venv env`
+   `python -m venv virt`
 3. **Activate the virtual environment**:
-On Windows: `env\Scripts\activate`
-On MacOS: `source env/bin/activate`
+   On Windows: `virt\Scripts\activate`
+   On MacOS: `source virt/bin/activate`
 4. **Install the required packages**:
    `pip install django`
 5. **Usage**
@@ -44,15 +44,6 @@ Run the development server: `python manage.py runserver`
 Access the application: Open your web browser and navigate to http://127.0.0.1:8000/.
 
 Access the admin interface: Navigate to http://127.0.0.1:8000/admin/ and log in using the superuser credentials you created earlier.
-
-
-### Key Formatting Choices:
-- **Headers**: Used to clearly define sections.
-- **Code Blocks**: For commands and scripts, allowing easy copy-pasting.
-- **Notes**: Highlighted important points.
-- **Bulleted Lists**: For clarity in instructions and features.
-
-You can easily copy and paste this into your README.md file and modify it as needed for your specific project details.
 
 
 
