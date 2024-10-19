@@ -113,6 +113,28 @@ strike {
     </div>
     <br/>
     {% endfor %}
+
+    <!-- Card Start -->
+    <div class="card shadow-sm p-3" style="max-width: 400px;">
+        <div class="card-body">
+            <!-- Product Description -->
+            <p class="card-text">Your order:</p>
+
+            <!-- Total Items and Total Price -->
+            <div class="d-flex justify-content-between">
+                <p class="mb-0"><strong>Total Items:</strong> <span id="cart_quantity">{{ cart|length }}</span></p>
+                <p class="mb-0"><strong>Total Price:</strong> <span>{{ totals }} VND</span></p>
+            </div>
+            <!-- Checkout Button -->
+            <div class="d-flex justify-content-end mt-3">
+                <button class="btn btn-primary btn-sm">Checkout</button>
+            </div>
+        </div>
+    </div>
+    <br/>
+
+    <!-- Card End -->
+
     {% else %}
     <!-- Empty Cart Message -->
     <div class="text-center mt-5">
