@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <br/>
+    <div class="card mb-3">
+        <div class="row g-0 d-flex justify-content-center align-items-center">
+            <div class="col-md-4 d-flex justify-content-center align-items-center">
+                <img src="{{ product.image.url }}" class="img-fluid rounded-start" alt="{{ product.name }}">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">{{ product.description }}</p>
+
+                    {% if product.is_sale %}
+                        <!-- sale -->
+                        <div class="d-flex justify-content-center small text-warning mb-2">
+                            <div class="bi-star-fill"></div>
+                            &nbsp;&nbsp;&nbsp;Sale!&nbsp;&nbsp;
+                            <div class="bi-star-fill"></div>
+                        </div>
+
+                        <!-- product price-->
+                        <strike>{{ product.price }} VND</strike>
+                        &nbsp;
+                        {{ product.sale_price }} VND
+                        <br/>
+
+                    {% else %}
+                        {{ product.price }} VND
+                    {% endif %}
+
+                    <a href="{% url 'home' %}" class="btn btn-secondary mt-3">Home</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+{% endblock %}
