@@ -2,14 +2,41 @@
 
 {% block content %}
 <!-- Header-->
-        <header class="bg-dark py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">New mordern ecommerce</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">Fast, convinient and security</p>
-                </div>
-            </div>
-        </header>
+<header class="py-5" style="background-color: #D1FAE5;">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-dark">
+            <h1 class="display-4 fw-bolder" style="font-size: 3.5rem; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);">Welcome to Our Modern E-commerce</h1>
+            <p class="lead fw-normal text-muted mb-4" style="font-size: 1.5rem;">Fast, Convenient, and Secure Shopping</p>
+            <a href="#features" class="btn btn-primary btn-lg" style="border-radius: 30px; padding: 10px 30px;">Explore Now</a>
+        </div>
+    </div>
+</header>
+
+<style>
+/* Additional Styles */
+header {
+    position: relative;
+    overflow: hidden;
+}
+
+header .text-center {
+    position: relative;
+    z-index: 1;
+}
+
+.btn-primary {
+    background-color: #007bff; /* Bootstrap Primary Color */
+    border: none;
+    color: #fff; /* Ensure the text is white for contrast */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Darker shade for hover effect */
+}
+</style>
+
+
+
         <!-- Section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
