@@ -42,25 +42,14 @@ def cart_delete(request):
 
 def cart_update(request):
     cart = Cart(request)
+    if request.POST.get('action') == 'post':
+        # Get stuff
+        product_id = int(request.POST.get('product_id'))
+        product_qty = int(request.POST.get('product_qty'))
 
-    # Ensure POST request and action is 'post'
-    if request.method == 'POST' and request.POST.get('action') == 'post':
-        try:
-            # Get product ID and quantity from the request
-            product_id = int(request.POST.get('product_id'))
-            product_qty = int(request.POST.get('product_qty'))
+        cart.update(product=product_id, quantity=product_qty)
 
-            # Validate product quantity (must be positive)
-            if product_qty < 1:
-                return JsonResponse({'error': 'Invalid quantity'}, status=400)
-
-            # Update the cart with new quantity
-            cart.update(product=product_id, quantity=product_qty)
-
-            # Return the updated quantity as a response
-            return JsonResponse({'qty': product_qty, 'product_id':product_id})
-
-        except (ValueError, KeyError):
-            return JsonResponse({'error': 'Invalid product or data'}, status=400)
-
-    return JsonResponse({'error': 'Invalid request'}, status=400)
+        response = JsonResponse({'qty':product_qty})
+        #return redirect('cart_summary')
+        messages.success(request, ("Your Cart Has Been Updated..."))
+        return response
