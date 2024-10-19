@@ -1,3 +1,4 @@
+from store.models import Product
 class Cart:
     def __init__(self, request):
         self.session = request.session
@@ -34,3 +35,16 @@ class Cart:
 
     def __len__(self):
         return sum(item['quantity'] for item in self.cart.values())
+
+
+    def get_prods(self):
+    	product_ids = self.cart.keys()
+    	products = Product.objects.filter(id__in=product_ids)
+
+    	return products
+
+
+
+
+
+
