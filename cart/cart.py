@@ -2,17 +2,17 @@ from store.models import Product
 class Cart:
     def __init__(self, request):
         self.session = request.session
-        # Get request
+        # Store the request for future use
         self.request = request
-        # Get the current session key if it exists
-        cart = self.session.get('session_key')
-
-        # If the user is new, no session key!  Create one!
-        if 'session_key' not in request.session:
-            cart = self.session['session_key'] = {}
-
-
-        # Make sure cart is available on all pages of site
+        
+        # Try to retrieve the 'cart' from the session, or initialize it as an empty dictionary if it doesn't exist
+        cart = self.session.get('cart')
+        
+        if not cart:
+            # If the cart does not exist, create an empty cart and store it in the session
+            cart = self.session['cart'] = {}
+        
+        # Make the cart accessible throughout the Cart class
         self.cart = cart
 
     def add(self, product, quantity):
@@ -27,7 +27,7 @@ class Cart:
         self.session.modified = True
 
     def __len__(self):
-        return len(self.cart)
+        return sum(item for item in self.cart.values())
 
 
     def get_prods(self):
