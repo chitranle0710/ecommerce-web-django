@@ -16,9 +16,16 @@
         <div class="col-8">
             <section id="about-us">
                 <br />
+                <strong>Billing Information</strong>
                 <form method="post" action="{% url 'update_info' %}">
+                    <br/>
                     {% csrf_token %}
                     {{ form.as_p }}
+                    <br/><br/>
+                    <strong>Shipping Information</strong>
+                    <br/><br/>
+                    {{ shipping_form.as_p }}
+
                     <button type="submit" class="btn btn-secondary">
                         Update
                     </button>
