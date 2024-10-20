@@ -164,6 +164,7 @@ $(document).on('click', '.update-cart', function(e){
     },
     success: function(json){
         console.log(json)
+        location.reload();
     },
 
     error: function(xhr, errmsg, err){
