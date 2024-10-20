@@ -31,11 +31,11 @@ def update_info(request):
             # Save shipping form
             shipping_form.save()
 
-            messages.success(request, "Your Info Has Been Updated!!")
+            messages.success(request, "Thông tin của bạn đã được cập nhật")
             return redirect('home')
         return render(request, "update_info.html", {'form':form, 'shipping_form':shipping_form})
     else:
-        messages.success(request, "You Must Be Logged In To Access That Page!!")
+        messages.success(request, "Bạn phải đăng nhập để vào được trang này")
         return redirect('home')
 
 
@@ -48,11 +48,11 @@ def update_user(request):
             user_form.save()
 
             login(request, current_user)
-            messages.success(request, "User Has Been Updated!!")
+            messages.success(request, "Người dùng đã được cập nhật")
             return redirect('home')
         return render(request, "update_user.html", {'user_form':user_form})
     else:
-        messages.success(request, "You Must Be Logged In To Access That Page!!")
+        messages.success(request, "Bạn phải đăng nhập để vào được trang này")
         return redirect('home')
 
 
@@ -63,7 +63,7 @@ def category(request, foo):
         products = Product.objects.filter(category = category)
         return render(request, 'category.html',{'products':products,'category': category})
     except:
-        messages.error(request, "That's category does not exist")
+        messages.error(request, "Thể loại này không tồn tại!!")
         return redirect('home')
 
 
@@ -102,10 +102,10 @@ def login_user(request):
                 for key,value in converted_cart.items():
                     cart.db_add(product=key, quantity=value)
 
-            messages.success(request, ("You Have Been Logged In!"))
+            messages.success(request, ("Đăng nhập thành công"))
             return redirect('home')
         else:
-            messages.success(request, ("There was an error, please try again..."))
+            messages.success(request, ("Đã có lỗi xảy ra, vui lòng thử lại..."))
             return redirect('login')
 
     else:
@@ -113,7 +113,7 @@ def login_user(request):
 
 def logout_user(request):
 	logout(request)
-	messages.success(request, ("You have logged out..."))
+	messages.success(request, ("Bạn đã đăng xuất"))
 	return redirect('home')
 
 def register_user(request):
@@ -127,10 +127,10 @@ def register_user(request):
             # log in user
             user = authenticate(username=username, password=password)
             login(request, user)
-            messages.success(request, ("Username Created - Please Fill Out Your User Info Below..."))
+            messages.success(request, ("Tên người dùng đã được tạo - Vui lòng điền thông tin người dùng của bạn bên dưới..."))
             return redirect('update_info')
         else:
-            messages.success(request, ("Whoops! There was a problem Registering, please try again..."))
+            messages.success(request, ("Ôi! Đã có vấn đề xảy ra khi đăng ký, vui lòng thử lại..."))
             return redirect('register')
     else:
         return render(request, 'register.html', {'form':form})
@@ -145,7 +145,7 @@ def update_password(request):
             # Is the form valid
             if form.is_valid():
                 form.save()
-                messages.success(request, "Your Password Has Been Updated...")
+                messages.success(request, "Mật khẩu của bạn đã được cập nhật...")
                 login(request, current_user)
                 return redirect('update_user')
             else:
@@ -156,7 +156,7 @@ def update_password(request):
             form = ChangePasswordForm(current_user)
             return render(request, "update_password.html", {'form':form})
     else:
-        messages.success(request, "You Must Be Logged In To View That Page...")
+        messages.success(request, "Bạn phải đăng nhập để xem trang đó...")
         return redirect('home')
 
 def search(request):
@@ -167,7 +167,7 @@ def search(request):
         searched = Product.objects.filter(Q(name__icontains=searched) | Q(description__icontains=searched))
         # Test for null
         if not searched:
-            messages.success(request, "That Product Does Not Exist...Please try Again.")
+            messages.success(request, "Sản phẩm đó không tồn tại... Vui lòng thử lại.")
             return render(request, "search.html", {})
         else:
             return render(request, "search.html", {'searched':searched})

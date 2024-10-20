@@ -34,7 +34,7 @@ def cart_add(request):
         # Return resonse
         # response = JsonResponse({'Product Name: ': product.name})
         response = JsonResponse({'qty': cart_quantity})
-        messages.success(request, ("Product Added To Cart..."))
+        messages.success(request, ("Sản phẩm đã được thêm vào giỏ hàng..."))
         return response
 
         
@@ -59,7 +59,7 @@ def cart_delete(request):
         # Save carty to the Profile Model
         current_user.update(old_cart=str(carty))
     
-    return JsonResponse({'message': 'Product removed from cart successfully'})
+    return JsonResponse({'message': 'Sản phẩm đã được xóa khỏi giỏ hàng'})
 
 def cart_update(request):
     cart = Cart(request)
@@ -72,5 +72,5 @@ def cart_update(request):
 
         response = JsonResponse({'qty':product_qty})
         #return redirect('cart_summary')
-        messages.success(request, ("Your Cart Has Been Updated..."))
+        messages.success(request, ("Giỏ hàng đã được cập nhật"))
         return response

@@ -128,8 +128,11 @@ strike {
             <!-- Checkout Button -->
             <div class="d-flex justify-content-end mt-3">
                 <a href="{% url 'checkout' %}">
-                <button class="btn btn-primary btn-sm">Checkout</button>
-            </a>
+    <button class="btn btn-primary btn-sm" style="background-color: #D0011B; border-color: #D0011B;">
+        Thanh toán
+    </button>
+</a>
+
             </div>
         </div>
     </div>
@@ -165,7 +168,6 @@ $(document).on('click', '.update-cart', function(e){
       action: 'post'
     },
     success: function(json){
-        console.log(json)
         location.reload();
     },
 
