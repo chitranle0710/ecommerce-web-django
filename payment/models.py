@@ -24,6 +24,12 @@ class ShippingAddress(models.Model):
 	def __str__(self):
 		return f'Shipping address - {str(self.id)}'
 
+def create_shipping(sender, instance, created, **kwargs):
+	if created:
+		user_shipping = ShippingAddress(user=instance)
+		user_shipping.save()
+post_save.connect(create_shipping, sender = User)
+
 
 # Create Order Model
 class Order(models.Model):
