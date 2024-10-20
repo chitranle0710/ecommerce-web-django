@@ -33,7 +33,7 @@
                     {% endif %}
                      <br/><br/>
                     <div class="row justify-content-center">
-                        <div class="col-md-2">Quantity</div>
+                        <div class="col-md-2">Số lượng:</div>
                         <div class="col-md-2">  
                            <select class="form-select form-select-sm" id="qty-cart">
                   <option value="1">1</option>
@@ -46,10 +46,13 @@
                     </div>
 
                     <br/>
-                    <a href="{% url 'home' %}" class="btn btn-secondary mt-3">Về trang chủ</a>
+                    <a href="{% url 'home' %}" class="btn" style="background-color: #F6C1A7; color: white; border: none; margin-top: 1rem;">Về trang chủ</a>
+
+
                     <br/>
                     <br/>
-                            <button type="button" value="{{ product.id }}" class="btn btn-secondary" id="add-cart">Thâm vào giỏ hàng</button>
+                            <button type="button" value="{{ product.id }}" class="btn" style="background-color: #D0011B; color: white;" id="add-cart">Thêm vào giỏ hàng</button>
+
 
                 </div>
             </div>

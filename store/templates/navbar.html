@@ -46,10 +46,12 @@
                         </li>
                     </ul>
                     <form class="d-flex">
-                    <a href="{% url 'cart_summary' %}" class="btn btn-outline-dark"><i class="bi-cart-fill me-1"></i>
-                            Giỏ hàng
-<span class="badge bg-dark text-white ms-1 rounded-pill" id="cart_quantity">{{ cart|length }}
-</span>
+                   <a href="{% url 'cart_summary' %}" class="btn btn-outline-dark" style="background-color: #EE4D2D; color: white;">
+    <i class="bi-cart-fill me-1" style="color: white;"></i>
+    Giỏ hàng
+    <span class="badge" style="background-color: transparent; color: white; border: 1px solid white;">{{ cart|length }}</span>
+</a>
+        
                         
                     </span>
                         

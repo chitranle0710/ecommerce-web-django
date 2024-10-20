@@ -2,14 +2,14 @@
 {% block content %}
 
 <!-- Header-->
-        <header class="bg-dark py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Tìm kiếm</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">Tìm nhanh cuốn sách mà bạn mong muốn</p>
-                </div>
-            </div>
-        </header>
+       <header class="py-5" style="background-color: #EE4D2D;">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Danh mục tìm kiếm</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Tìm kiếm theo tên</p>
+        </div>
+    </div>
+</header>
 
         <div class="container">
         	<div class="row">
@@ -25,7 +25,7 @@
         {% csrf_token %}
         <div class="mb-3">
   
-          <input type="text" class="form-control" placeholder="Search For Products" name="searched">
+          <input type="text" class="form-control" placeholder="Tìm kiếm theo tên" name="searched">
         </div>
     <button type="submit" class="btn btn-secondary">
         Tìm kiếm sản phẩm

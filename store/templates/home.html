@@ -1,19 +1,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<!-- Header-->
-<header class="py-5" style="background-color: #D1FAE5;">
+<!-- header-->
+<header class="py-5" style="background-color: #ee4d2d;">
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-dark">
-            <h1 class="display-4 fw-bolder" style="font-size: 3.5rem; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);">Welcome to Our Modern E-commerce</h1>
-            <p class="lead fw-normal text-muted mb-4" style="font-size: 1.5rem;">Nhanh chóng, thuận tiện và bảo mật nhất!!</p>
-            <a href="#features" class="btn btn-primary btn-lg" style="border-radius: 30px; padding: 10px 30px;">Khám phá thêm</a>
+           <h1 class="display-4 fw-bolder" style="font-size: 3.5rem; color: #fff; text-shadow: none;">
+    Mua hàng cùng ShopFun nhé bạn ơi!!!
+</h1>
+
+            <p class="lead fw-normal mb-4" style="font-size: 1.5rem; color: #fff;">Nhanh chóng, thuận tiện và bảo mật nhất!!</p>
+
+            <a href="#features" class="btn btn-lg" style="border-radius: 30px; padding: 10px 30px; background-color: #fff; color: #000; border: 2px solid #000;">Khám phá thêm</a>
+
         </div>
     </div>
 </header>
 
 <style>
-/* Additional Styles */
+/* additional styles */
 header {
     position: relative;
     overflow: hidden;
@@ -25,85 +30,106 @@ header .text-center {
 }
 
 .btn-primary {
-    background-color: #007bff; /* Bootstrap Primary Color */
+    background-color: #007bff; /* bootstrap primary color */
     border: none;
-    color: #fff; /* Ensure the text is white for contrast */
+    color: #fff; /* ensure the text is white for contrast */
 }
 
 .btn-primary:hover {
-    background-color: #0056b3; /* Darker shade for hover effect */
+    background-color: #0056b3; /* darker shade for hover effect */
 }
 </style>
 
+<!-- section-->
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+            {% for product in products %}
+                {% if product.is_sale %}
+                 
+                <div class="col mb-5">
+                    <div class="card h-100">
+                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">sale</div> 
+                        <!-- product image-->
+                        <img class="card-img-top" src="{{ product.image.url }}" alt="..." />
+                        <!-- product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- product name-->
+                                <h5 class="fw-bolder" style="color: #D0011B;">{{ product.name }}</h5>
 
 
-        <!-- Section-->
-        <section class="py-5">
-            <div class="container px-4 px-lg-5 mt-5">
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-
-                    {% for product in products %}
-                        {% if product.is_sale %}
-                         
-                        <div class="col mb-5">
-                        <div class="card h-100">
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div> 
-                            <!-- Product image-->
-                            <img class="card-img-top" src="{{ product.image.url }}" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">{{ product.name }}</h5>
-
-                                    <!-- Sale -->
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                    <div class="bi-star-fill"></div>
-                                    &nbsp;&nbsp;&nbsp;Sale!&nbsp;&nbsp;
-                                    <div class="bi-star-fill"></div>
-                                    </div>
-
-                                    <!-- Product price-->
-                                    <strike> {{product.price}} VND
-                                    </strike>
-                                     &nbsp;
-                                    {{product.sale_price}} VND
-                                    <br/>
-                                    {{ product.category.name }}
+                                <!-- sale -->
+                                <div class="d-flex justify-content-center small text-warning mb-2">
+                                <div class="bi-star-fill"></div>
+                                &nbsp;&nbsp;&nbsp;sale!&nbsp;&nbsp;
+                                <div class="bi-star-fill"></div>
                                 </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'product' product.id %}">Chi tiết</a></div>
+
+                                <!-- product price-->
+                                <strike> {{ product.price }} vnd </strike> &nbsp; {{ product.sale_price }} VNĐ
+                                <br/>
+                                {{ product.category.name }}
                             </div>
                         </div>
-                    </div>
+                        <!-- product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+    <div class="text-center">
+        <a class="btn btn-outline-dark mt-auto custom-btn-hover" href="{% url 'product' product.id %}">Chi tiết</a>
+    </div>
+</div>
 
-                        {% else %}
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="{{ product.image.url }}" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">{{ product.name }}</h5>
-                                    <!-- Product price-->
-                                    {{product.price}} VNĐ
-                                    <br/>
-                                    {{ product.category.name }}
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'product' product.id %}">Chi tiết</a></div>
-                            </div>
-                        </div>
+<!-- Add this CSS to your stylesheet -->
+<style>
+    .custom-btn-hover:hover {
+        color: #fff; /* Change text color to white on hover */
+        background-color: #EE4D2D; /* Change background color on hover */
+        border-color: #EE4D2D; /* Change border color on hover */
+    }
+</style>
                     </div>
-                    {% endif %}
-                    {% endfor %}
                 </div>
-            </div>
-        </section>
+
+                {% else %}
+                <div class="col mb-5">
+                    <div class="card h-100">
+                        <!-- product image-->
+                        <img class="card-img-top" src="{{ product.image.url }}" alt="..." />
+                        <!-- product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- product name-->
+                                <h5 class="fw-bolder" style="color: #D0011B;">{{ product.name }}</h5>
+
+                                <!-- product price-->
+                                {{ product.price }} VNĐ
+                                <br/>
+                                {{ product.category.name }}
+                            </div>
+                        </div>
+                        <!-- product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+    <div class="text-center">
+        <a class="btn btn-outline-dark mt-auto custom-btn-hover" href="{% url 'product' product.id %}">Chi tiết</a>
+    </div>
+</div>
+
+<!-- Add this CSS to your stylesheet -->
+<style>
+    .custom-btn-hover:hover {
+        color: #fff; /* Change text color to white on hover */
+        background-color: #EE4D2D; /* Change background color on hover */
+        border-color: #EE4D2D; /* Change border color on hover */
+    }
+</style>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
 {% endblock %}
