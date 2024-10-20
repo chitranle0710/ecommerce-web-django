@@ -6,6 +6,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .forms import SignUpForm, UpdateUserForm, ChangePasswordForm
 from django import forms
+from django.db.models import Q
+
 
 def update_user(request):
     if request.user.is_authenticated:
@@ -117,5 +119,20 @@ def update_password(request):
     else:
         messages.success(request, "You Must Be Logged In To View That Page...")
         return redirect('home')
+
+def search(request):
+    # Determine if they filled out the form
+    if request.method == "POST":
+        searched = request.POST['searched']
+        # Query The Products DB Model
+        searched = Product.objects.filter(Q(name__icontains=searched) | Q(description__icontains=searched))
+        # Test for null
+        if not searched:
+            messages.success(request, "That Product Does Not Exist...Please try Again.")
+            return render(request, "search.html", {})
+        else:
+            return render(request, "search.html", {'searched':searched})
+    else:
+        return render(request, "search.html", {})
 
 
