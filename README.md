@@ -1,27 +1,27 @@
-# django project with sqlite
+# Django project with sqlite
 
 ## overview
-this project is a web application built using django, a high-level python web framework. it utilizes sqlite as the database for data storage and demonstrates the capabilities of django in creating a simple, scalable web application.
+This project is a web application built using django, a high-level python web framework. it utilizes sqlite as the database for data storage and demonstrates the capabilities of django in creating a simple, scalable web application.
 
 ## table of contents
-- [features](#features)
-- [requirements](#requirements)
-- [installation](#installation)
-- [usage](#usage)
-- [running the application](#running-the-application)
-- [contributing](#contributing)
-- [license](#license)
+- [Features](#features)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Running the application](#running-the-application)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## features
-- simple and intuitive user interface
-- crud (create, read, update, delete) functionality
-- sqlite database for easy setup and management
-- virtual environment to isolate project dependencies
+- Simple and intuitive user interface
+- Crud (create, read, update, delete) functionality
+- Sqlite database for easy setup and management
+- Virtual environment to isolate project dependencies
 
 ## requirements
-- python 3.x
-- django 3.x or higher
-- sqlite (comes pre-installed with python)
+- Python 3.x
+- Django 3.x or higher
+- Sqlite (comes pre-installed with python)
 
 ## installation
 
