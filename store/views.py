@@ -16,19 +16,12 @@ from cart.cart import Cart
 
 def update_info(request):
     if request.user.is_authenticated:
-        # Get Current User
         current_user = Profile.objects.get(user__id=request.user.id)
-        # Get Current User's Shipping Info
         shipping_user = ShippingAddress.objects.get(user__id=request.user.id)
-        
-        # Get original User Form
         form = UserInfoForm(request.POST or None, instance=current_user)
-        # Get User's Shipping Form
         shipping_form = ShippingForm(request.POST or None, instance=shipping_user)      
         if form.is_valid() or shipping_form.is_valid():
-            # Save original form
             form.save()
-            # Save shipping form
             shipping_form.save()
 
             messages.success(request, "Thông tin của bạn đã được cập nhật")
@@ -76,7 +69,7 @@ def home(request):
 	products = Product.objects.all()
 	return render(request, 'home.html', {'products':products});
 
-def about(request):
+def about_me(request):
 	return render(request, 'about.html', {});
 
 def login_user(request):
@@ -86,19 +79,11 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-
-            # Do some shopping cart stuff
             current_user = Profile.objects.get(user__id=request.user.id)
-            # Get their saved cart from database
             saved_cart = current_user.old_cart
-            # Convert database string to python dictionary
             if saved_cart:
-                # Convert to dictionary using JSON
                 converted_cart = json.loads(saved_cart)
-                # Add the loaded cart dictionary to our session
-                # Get the cart
                 cart = Cart(request)
-                # Loop thru the cart and add the items from the database
                 for key,value in converted_cart.items():
                     cart.db_add(product=key, quantity=value)
 
@@ -139,10 +124,8 @@ def register_user(request):
 def update_password(request):
     if request.user.is_authenticated:
         current_user = request.user
-        # Did they fill out the form
         if request.method  == 'POST':
             form = ChangePasswordForm(current_user, request.POST)
-            # Is the form valid
             if form.is_valid():
                 form.save()
                 messages.success(request, "Mật khẩu của bạn đã được cập nhật...")
@@ -159,13 +142,10 @@ def update_password(request):
         messages.success(request, "Bạn phải đăng nhập để xem trang đó...")
         return redirect('home')
 
-def search(request):
-    # Determine if they filled out the form
+def search_product(request):
     if request.method == "POST":
         searched = request.POST['searched']
-        # Query The Products DB Model
         searched = Product.objects.filter(Q(name__icontains=searched) | Q(description__icontains=searched))
-        # Test for null
         if not searched:
             messages.success(request, "Sản phẩm đó không tồn tại... Vui lòng thử lại.")
             return render(request, "search.html", {})

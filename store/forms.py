@@ -36,9 +36,7 @@ class ChangePasswordForm(SetPasswordForm):
 		self.fields['new_password2'].help_text = '<span class="form-text text-muted"><small>Nhập cùng một mật khẩu như trước để xác minh.</small></span>'
 
 class UpdateUserForm(UserChangeForm):
-	# Hide Password stuff
 	password = None
-	# Get other fields
 	email = forms.EmailField(label="", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Email Address'}), required=False)
 	first_name = forms.CharField(label="", max_length=100, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'First Name'}), required=False)
 	last_name = forms.CharField(label="", max_length=100, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Last Name'}), required=False)

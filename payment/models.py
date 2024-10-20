@@ -51,7 +51,6 @@ class Order(models.Model):
 		return f'Order - {str(self.id)}'
 
 
-
 # Create Order Items Model
 class OrderItem(models.Model):
 	# Foreign Keys

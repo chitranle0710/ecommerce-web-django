@@ -25,15 +25,11 @@ def create_profile(sender, instance, created, **kwargs):
 post_save.connect(create_profile, sender = User)
 
 
-# Create your models here.
 class Category(models.Model):
 	name = models.CharField(max_length = 50)
 
 	def __str__(self):
 		return self.name
-
-	# class Meta:
-	# 	vebose_name_plural = 'categories'
 
 class Customer(models.Model):
 	first_name = models.CharField(max_length = 50)
