@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from store.models import Product
+from store.models import Product, Profile
 from django.http import JsonResponse
 from .cart import Cart
 from django.contrib import messages
@@ -40,16 +40,26 @@ def cart_add(request):
         
 def cart_delete(request):
     cart = Cart(request)
-    if request.POST.get('action') == 'post':
-        # Get stuff
-        product_id = int(request.POST.get('product_id'))
-        # Call delete Function in Cart
-        cart.delete(product=product_id)
+    product_id = str(request.POST.get('product_id'))  # Ensure product ID comes from the request
 
-        response = JsonResponse({'product':product_id})
-        #return redirect('cart_summary')
-        messages.success(request, ("Item Deleted From Shopping Cart..."))
-        return response
+    # Delete from dictionary/cart
+    if product_id in cart.cart:
+        del cart.cart[product_id]
+
+    cart.session.modified = True
+
+    # Deal with logged-in user
+    if request.user.is_authenticated:
+        # Get the current user profile
+        current_user = Profile.objects.filter(user__id=request.user.id)
+        
+        # Convert {'3': 1, '2': 4} to {"3": 1, "2": 4}
+        carty = str(cart.cart).replace("'", '"')
+
+        # Save carty to the Profile Model
+        current_user.update(old_cart=str(carty))
+    
+    return JsonResponse({'message': 'Product removed from cart successfully'})
 
 def cart_update(request):
     cart = Cart(request)
