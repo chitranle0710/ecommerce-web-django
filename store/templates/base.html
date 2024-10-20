@@ -20,12 +20,36 @@
          {% include 'navbar.html' %}
 
          {% if messages %}
-    {% for message in messages %}
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            {{ message }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <!-- Modal Trigger -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var myModal = new bootstrap.Modal(document.getElementById('messageModal'), {});
+            myModal.show();
+        });
+    </script>
+
+    <!-- Modal HTML -->
+    <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="messageModalLabel">Thông báo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color: #D0011B; border-color: #D0011B;">
+    Đóng
+</button>
+
+                </div>
+            </div>
         </div>
-    {% endfor %}
+    </div>
 {% endif %}
 
          {% block content %}
@@ -34,10 +58,62 @@
         <!-- footer-->
         <!-- footer-->
 <footer class="py-5" style="background-color: #EE4D2D;">
+        <section id="footer" style="color: white;">
     <div class="container">
-        <p class="m-0 text-center" style="color: white;">Copyright &copy; ShoppingNow 2024</p>
-        <br/>
+        <div class="row text-center text-xs-center text-sm-left text-md-left">
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <h5 style="color: white;">Về chúng tôi</h5>
+                <ul class="list-unstyled quick-links">
+                    <li><a href="https://www.fiverr.com/share/qb8D02" style="color: white;"><i class="fa fa-angle-double-right"></i>Kênh</a></li>
+                    <li><a href="https://www.fiverr.com/share/qb8D02" style="color: white;"><i class="fa fa-angle-double-right"></i>Tuyển dụng</a></li>
+                    <li><a href="https://www.fiverr.com/share/qb8D02" style="color: white;"><i class="fa fa-angle-double-right"></i>Liên hệ</a></li>
+                    <li><a href="https://www.fiverr.com/share/qb8D02" style="color: white;"><i class="fa fa-angle-double-right"></i>Điều khoản</a></li>
+                    <li><a href="https://www.fiverr.com/share/qb8D02" style="color: white;"><i class="fa fa-angle-double-right"></i>Flash Sales</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <h5 style="color: white;">Thanh toán</h5>
+                <ul class="list-unstyled quick-links">
+                    <li><a href="https://www.fiverr.com/share/qb8D02" style="color: white;"><i class="fa fa-angle-double-right"></i>Tích điểm</a></li>
+                    <li><a href="https://www.fiverr.com/share/qb8D02" style="color: white;"><i class="fa fa-angle-double-right"></i>Trả hàng</a></li>
+                    <li><a href="https://www.fiverr.com/share/qb8D02" style="color: white;"><i class="fa fa-angle-double-right"></i>Hoàn tiền</a></li>
+                    <li><a href="https://www.fiverr.com/share/qb8D02" style="color: white;"><i class="fa fa-angle-double-right"></i>Hướng dẫn bán hàng</a></li>
+                    <li><a href="https://wwwe.sunlimetech.com" style="color: white;" title="Design and developed by"><i class="fa fa-angle-double-right"></i>Chính sách bảo hành</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <h5 style="color: white;">Chăm sóc khách hàng</h5>
+                <ul class="list-unstyled quick-links">
+                    <li><a href="https://www.fiverr.com/share/qb8D02" style="color: white;"><i class="fa fa-angle-double-right"></i>Trang chủ</a></li>
+                    <li><a href="https://www.fiverr.com/share/qb8D02" style="color: white;"><i class="fa fa-angle-double-right"></i>Về tôi</a></li>
+                    <li><a href="https://www.fiverr.com/share/qb8D02" style="color: white;"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
+                    <li><a href="https://www.fiverr.com/share/qb8D02" style="color: white;"><i class="fa fa-angle-double-right"></i>Quy chế hoạt động</a></li>
+                    <li><a href="https://wwwe.sunlimetech.com" style="color: white;" title="Design and developed by"><i class="fa fa-angle-double-right"></i>Trung tâm trợ giúp</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+                <ul class="list-unstyled list-inline social text-center">
+                    <li class="list-inline-item"><a href="https://www.fiverr.com/share/qb8D02" style="color: white;"><i class="fa fa-facebook"></i></a></li>
+                    <li class="list-inline-item"><a href="https://www.fiverr.com/share/qb8D02" style="color: white;"><i class="fa fa-twitter"></i></a></li>
+                    <li class="list-inline-item"><a href="https://www.fiverr.com/share/qb8D02" style="color: white;"><i class="fa fa-instagram"></i></a></li>
+                    <li class="list-inline-item"><a href="https://www.fiverr.com/share/qb8D02" style="color: white;"><i class="fa fa-google-plus"></i></a></li>
+                    <li class="list-inline-item"><a href="https://www.fiverr.com/share/qb8D02" style="color: white;" target="_blank"><i class="fa fa-envelope"></i></a></li>
+                </ul>
+            </div>
+            <hr>
+        </div>  
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+                <p><u><a href="https://www.nationaltransaction.com/" style="color: white;">Việt Nam</p>
+                <p class="h6">© All right Reversed.<a class="text-green ml-2" href="https://www.sunlimetech.com" style="color: white;" target="_blank">ShoppingFun</a></p>
+            </div>
+            <hr>
+        </div>  
     </div>
+</section>
+
 </footer>
 
 

@@ -128,8 +128,11 @@ strike {
             <!-- Checkout Button -->
             <div class="d-flex justify-content-end mt-3">
                 <a href="{% url 'checkout' %}">
-                <button class="btn btn-primary btn-sm">Checkout</button>
-            </a>
+    <button class="btn btn-primary btn-sm" style="background-color: #D0011B; border-color: #D0011B;">
+        Thanh toán
+    </button>
+</a>
+
             </div>
         </div>
     </div>
@@ -149,7 +152,6 @@ strike {
 </div>
 
 <script>
-// Update Cart
 $(document).on('click', '.update-cart', function(e){
     e.preventDefault();
     // grab the product id
@@ -165,7 +167,6 @@ $(document).on('click', '.update-cart', function(e){
       action: 'post'
     },
     success: function(json){
-        console.log(json)
         location.reload();
     },
 
@@ -178,11 +179,8 @@ $(document).on('click', '.update-cart', function(e){
 
 })
 
-// Delete Item From Cart
 $(document).on('click', '.delete-product', function(e){
     e.preventDefault();
-    // grab the product id
-    //var productid = $(this).data('index');
 
     $.ajax({
     type: 'POST',
@@ -193,8 +191,6 @@ $(document).on('click', '.delete-product', function(e){
       action: 'post'
     },
     success: function(json){
-        //console.log(json)
-        //document.getElementById("cart_quantity").textContent = json.qty
         location.reload();
     },
 

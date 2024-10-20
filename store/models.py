@@ -25,15 +25,11 @@ def create_profile(sender, instance, created, **kwargs):
 post_save.connect(create_profile, sender = User)
 
 
-# Create your models here.
 class Category(models.Model):
 	name = models.CharField(max_length = 50)
 
 	def __str__(self):
 		return self.name
-
-	# class Meta:
-	# 	vebose_name_plural = 'categories'
 
 class Customer(models.Model):
 	first_name = models.CharField(max_length = 50)
@@ -47,7 +43,7 @@ class Customer(models.Model):
 
 class Product(models.Model):
 	name = models.CharField(max_length = 100)
-	price = models.DecimalField(default = 0, decimal_places =2, max_digits = 8)
+	price = models.DecimalField(default = 0, decimal_places =2, max_digits = 20)
 	category = models.ForeignKey(Category, on_delete = models.CASCADE, default = 1)
 	description = models.CharField(max_length = 500, default = '', blank = True, null = True)
 	image = models.ImageField(upload_to = 'uploads/product/')

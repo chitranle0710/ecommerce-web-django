@@ -4,12 +4,12 @@
 
 {% block content %}
 
-        <!-- Header-->
+        <!-- header-->
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Processing Order...</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">This is temporary</p>
+                    <h1 class="display-4 fw-bolder">processing order...</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">this is temporary</p>
                 </div>
             </div>
         </header>
@@ -20,7 +20,7 @@
                     <div class="col-md-6 offset-md-3">
           <div class="card">
           <div class="card-header">
-            Order Summary
+            Order summary
           </div>
           <div class="card-body">
             {% for product in cart_products %}
@@ -32,7 +32,7 @@
                 {% endif %}
 
                 <br/>
-                <small>Quantity: 
+                <small>quantity: 
                 {% for key, value in quantities.items %}
                     {% if key == product.id|slugify %}
                         {{ value }}
@@ -41,28 +41,28 @@
                 <br/><br/>
 
             {% endfor %}
-            Total:  ${{ totals }}
+            total:  ${{ totals }}
             <br/><br/>
-            <a href="{% url 'cart_summary' %}" class="btn btn-sm btn-outline-secondary">Update Items</a>
+            <a href="{% url 'cart_summary' %}" class="btn btn-sm btn-outline-secondary">update items</a>
           </div>
         </div>
 <br/><br/>
 <div class="card">
   <div class="card-header">
-    Shipping Info
+    shipping info
   </div>
   <div class="card-body">
     
-    Name: {{ shipping_info.shipping_full_name }}<br/>
-    Email: {{ shipping_info.shipping_email }}<br/>
-    Address 1: {{ shipping_info.shipping_address1 }}<br/>
-    Address 2: {{ shipping_info.shipping_address2 }}<br/>
-    City: {{ shipping_info.shipping_city }}<br/>
-    State: {{ shipping_info.shipping_state }}<br/>
-    Zipcode: {{ shipping_info.shipping_zipcode }}<br/>
-    Country: {{ shipping_info.shipping_country }}<br/>
+    name: {{ shipping_info.shipping_full_name }}<br/>
+    email: {{ shipping_info.shipping_email }}<br/>
+    address 1: {{ shipping_info.shipping_address1 }}<br/>
+    address 2: {{ shipping_info.shipping_address2 }}<br/>
+    city: {{ shipping_info.shipping_city }}<br/>
+    state: {{ shipping_info.shipping_state }}<br/>
+    zipcode: {{ shipping_info.shipping_zipcode }}<br/>
+    country: {{ shipping_info.shipping_country }}<br/>
     <br/>
-    <a href="{% url 'checkout' %}" class="btn btn-outline-secondary">Update Shipping</a>
+    <a href="{% url 'checkout' %}" class="btn btn-outline-secondary">update shipping</a>
 
   </div>
 </div>
@@ -70,10 +70,10 @@
 
 <div class="card">
   <div class="card-header">
-    Billing Info
+    billing info
   </div>
   <div class="card-body">
-    <form method="POST" action="{% url 'process_order' %}">
+    <form method="post" action="{% url 'process_order' %}">
       {% csrf_token %}
     {{ billing_form.as_p }}
     
@@ -84,7 +84,7 @@
 
 
 <button type="submit" class="btn btn-secondary">
-  Pay Now
+  Pay now
 </button>
 </form>
 <br/><br/>
