@@ -8,8 +8,8 @@
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Thông tin hóa đơn</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">Vui lòng nhập thông tin thanh toán</p>
+                    <h1 class="display-4 fw-bolder">Processing Order...</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">This is temporary</p>
                 </div>
             </div>
         </header>
@@ -20,7 +20,7 @@
                     <div class="col-md-6 offset-md-3">
           <div class="card">
           <div class="card-header">
-            Tổng quan
+            Order Summary
           </div>
           <div class="card-body">
             {% for product in cart_products %}
@@ -43,13 +43,13 @@
             {% endfor %}
             Total:  ${{ totals }}
             <br/><br/>
-            <a href="{% url 'cart_summary' %}" class="btn btn-sm btn-outline-secondary">Cập nhật giỏ hàng</a>
+            <a href="{% url 'cart_summary' %}" class="btn btn-sm btn-outline-secondary">Update Items</a>
           </div>
         </div>
 <br/><br/>
 <div class="card">
   <div class="card-header">
-    Thông tin vận chuyển
+    Shipping Info
   </div>
   <div class="card-body">
     
@@ -62,22 +62,15 @@
     Zipcode: {{ shipping_info.shipping_zipcode }}<br/>
     Country: {{ shipping_info.shipping_country }}<br/>
     <br/>
-    <a href="{% url 'checkout' %}" class="btn btn-outline-secondary">Cập nhật thông tin vận chuyển</a>
+    <a href="{% url 'checkout' %}" class="btn btn-outline-secondary">Update Shipping</a>
 
   </div>
 </div>
 <br/><br/>
 
-<center>
-    {{ paypal_form.render }}
-</center>
-
-<br/><br/>
-
-
 <div class="card">
   <div class="card-header">
-    Thông tin hóa đơn
+    Billing Info
   </div>
   <div class="card-body">
     <form method="POST" action="{% url 'process_order' %}">

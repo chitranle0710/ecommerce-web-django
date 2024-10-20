@@ -22,13 +22,13 @@
                         </div>
 
                         <!-- product price-->
-                        <strike>{{ product.price }} VND</strike>
+                        <strike>{{ product.price }} VNĐ</strike>
                         &nbsp;
-                        {{ product.sale_price }} VND
+                        {{ product.sale_price }} VNĐ
 
 
                     {% else %}
-                        {{ product.price }} VND
+                        {{ product.price }} VNĐ
 
                     {% endif %}
                      <br/><br/>
@@ -46,10 +46,10 @@
                     </div>
 
                     <br/>
-                    <a href="{% url 'home' %}" class="btn btn-secondary mt-3">Home</a>
+                    <a href="{% url 'home' %}" class="btn btn-secondary mt-3">Về trang chủ</a>
                     <br/>
                     <br/>
-                            <button type="button" value="{{ product.id }}" class="btn btn-secondary" id="add-cart">Add To Cart</button>
+                            <button type="button" value="{{ product.id }}" class="btn btn-secondary" id="add-cart">Thâm vào giỏ hàng</button>
 
                 </div>
             </div>

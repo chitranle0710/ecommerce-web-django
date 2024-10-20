@@ -1,40 +1,40 @@
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="{% url 'home' %}">ShoppingNow</a>
+                <a class="navbar-brand" href="{% url 'home' %}">ShoppingFun</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'home' %}">Trang chủ</a>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">Về tôi</a></li>
 
-                        <li class="nav-item"><a class="nav-link" href="{% url 'search' %}">Search</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'search' %}">Tìm kiếm sách</a></li>
 
                         {% if user.is_authenticated %}
 
                          <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Profile</a>
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Cá nhân</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="{% url 'update_user'%}">Update User</a></li>
-                                <li><a class="dropdown-item" href="{% url 'update_info' %}">Update Blling Information</a></li>
+                                <li><a class="dropdown-item" href="{% url 'update_user'%}">Thay đổi thông tin người dùng</a></li>
+                                <li><a class="dropdown-item" href="{% url 'update_info' %}">Thay đổi thông tin bill</a></li>
                             </ul>
                         </li>
 
-                        <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Đăng xuất</a></li>
 
                         {% else %}
 
-                        <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Đăng nhập</a></li>
 
-                         <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
+                         <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Đăng ký</a></li>
 
                         {% endif %}
  
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Phân loại</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="{% url 'home' %}">All Products</a></li>
+                                <li><a class="dropdown-item" href="{% url 'home' %}">Xem tất cả</a></li>
                                 <li><hr class="dropdown-divider" /></li>
                                 <li><a class="dropdown-item" href="{% url 'category' 'Văn Học-Đại-Chúng' %}">Văn Học Đại Chúng</a></li>
                                 <li><a class="dropdown-item" href="{% url 'category' 'Văn Học-Nước-Ngoài' %}">Văn Học Nước Ngoài</a></li>
@@ -47,7 +47,7 @@
                     </ul>
                     <form class="d-flex">
                     <a href="{% url 'cart_summary' %}" class="btn btn-outline-dark"><i class="bi-cart-fill me-1"></i>
-                            Cart
+                            Giỏ hàng
 <span class="badge bg-dark text-white ms-1 rounded-pill" id="cart_quantity">{{ cart|length }}
 </span>
                         

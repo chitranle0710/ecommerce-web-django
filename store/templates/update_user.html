@@ -5,8 +5,7 @@
 <header class="bg-dark py-5">
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">Update</h1>
-            <p class="lead fw-normal text-white-50 mb-0">Here you can update your profile</p>
+            <h1 class="display-4 fw-bolder">Thông tin khách hàng</h1>
         </div>
     </div>
 </header>
@@ -20,13 +19,13 @@
                     {% csrf_token %}
                     {{ user_form.as_p }}
                     <button type="submit" class="btn btn-secondary">
-                        Update
+                        Cập nhật
                     </button>
                 </form>
                 <br />
             </section>
 
-<a href="{% url 'update_password' %}" class="btn btn-secondary">Update Password</a>
+<a href="{% url 'update_password' %}" class="btn btn-secondary">Cập nhật lại mật khẩu</a>
 <br/><br/>
 <br/><br/>
 <br/><br/>

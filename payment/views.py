@@ -13,7 +13,10 @@ from django.conf import settings
 import uuid # unique user id for duplictate orders
 
 # Create your views here.
-# Check to see if user is logged in
+def process_order(request):
+	pass
+
+
 def billing_info(request):
 	if request.POST:
 		# Get the cart

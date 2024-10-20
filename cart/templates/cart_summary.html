@@ -5,9 +5,8 @@
 <header class="py-5" style="background-color: #D1FAE5;">
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-dark">
-            <h1 class="display-4 fw-bolder" style="font-size: 2.5rem; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);">Shopping Cart</h1>
-            <p class="lead fw-normal text-muted mb-4" style="font-size: 1.2rem;">Prepare to become professional</p>
-            <a href="#features" class="btn btn-primary btn-sm" style="border-radius: 20px; padding: 5px 20px;">Explore Now</a>
+            <h1 class="display-4 fw-bolder" style="font-size: 2.5rem; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);">Giỏ hàng</h1>
+            <p class="lead fw-normal text-muted mb-4" style="font-size: 1.2rem;">Xem lại những gì trong giỏ hàng nhé!!!</p>
         </div>
     </div>
 </header>
@@ -83,7 +82,7 @@ strike {
                     {% endif %}
                     <br/><br/>
         <div class="row justify-content-center">
-    <div class="col-md-2">Quantity:</div>
+    <div class="col-md-2">Số lượng:</div>
                 <div class="col-md-2">
                 <select class="form-select form-select-sm" id="select{{product.id}}">
     <!-- Loop through the quantities dictionary -->
@@ -104,9 +103,9 @@ strike {
                 </div>
             </div>
             <br/><br/>
-            <a href="{% url 'home'%}" class="btn btn-secondary">Home</a>
-        <button type="button" data-index="{{product.id}}" class="btn btn-secondary update-cart">Update</button>
-        <button type="button" data-index="{{product.id}}" class="btn btn-danger delete-product">Remove</button>
+            <a href="{% url 'home'%}" class="btn btn-secondary">Trang chủ</a>
+        <button type="button" data-index="{{product.id}}" class="btn btn-secondary update-cart">Cập nhật</button>
+        <button type="button" data-index="{{product.id}}" class="btn btn-danger delete-product">Xóa</button>
                 </div>
             </div>
         </div>
@@ -118,12 +117,12 @@ strike {
     <div class="card shadow-sm p-3" style="max-width: 400px;">
         <div class="card-body">
             <!-- Product Description -->
-            <p class="card-text">Your order:</p>
+            <p class="card-text">Thông tin:</p>
 
             <!-- Total Items and Total Price -->
             <div class="d-flex justify-content-between">
-                <p class="mb-0"><strong>Total Items:</strong> <span id="cart_quantity">{{ cart|length }}</span></p>
-                <p class="mb-0"><strong>Total Price:</strong> <span>{{ totals }} VND</span></p>
+                <p class="mb-0"><strong>Tổng sản phẩm:</strong> <span id="cart_quantity">{{ cart|length }}</span></p>
+                <p class="mb-0"><strong>Tổng tiền:</strong> <span>{{ totals }} VND</span></p>
             </div>
             <!-- Checkout Button -->
             <div class="d-flex justify-content-end mt-3">
@@ -140,9 +139,9 @@ strike {
     {% else %}
     <!-- Empty Cart Message -->
     <div class="text-center mt-5">
-        <h2>Your Cart is Empty</h2>
-        <p>Looks like you haven't added any products yet.</p>
-        <a href="{% url 'home' %}" class="btn btn-primary btn-sm">Start Shopping</a>
+        <h2>Giỏ hàng bạn đang trống</h2>
+        <p>Có vẻ bạn chưa thêm món nào cả</p>
+        <a href="{% url 'home' %}" class="btn btn-primary btn-sm">Bắt đầu shopping</a>
     </div>
     <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
     {% endif %}

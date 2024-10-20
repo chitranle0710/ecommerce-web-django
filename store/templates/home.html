@@ -6,8 +6,8 @@
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-dark">
             <h1 class="display-4 fw-bolder" style="font-size: 3.5rem; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);">Welcome to Our Modern E-commerce</h1>
-            <p class="lead fw-normal text-muted mb-4" style="font-size: 1.5rem;">Fast, Convenient, and Secure Shopping</p>
-            <a href="#features" class="btn btn-primary btn-lg" style="border-radius: 30px; padding: 10px 30px;">Explore Now</a>
+            <p class="lead fw-normal text-muted mb-4" style="font-size: 1.5rem;">Nhanh chóng, thuận tiện và bảo mật nhất!!</p>
+            <a href="#features" class="btn btn-primary btn-lg" style="border-radius: 30px; padding: 10px 30px;">Khám phá thêm</a>
         </div>
     </div>
 </header>
@@ -74,7 +74,7 @@ header .text-center {
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'product' product.id %}">View Product</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'product' product.id %}">Chi tiết</a></div>
                             </div>
                         </div>
                     </div>
@@ -90,14 +90,14 @@ header .text-center {
                                     <!-- Product name-->
                                     <h5 class="fw-bolder">{{ product.name }}</h5>
                                     <!-- Product price-->
-                                    {{product.price}} VND
+                                    {{product.price}} VNĐ
                                     <br/>
                                     {{ product.category.name }}
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'product' product.id %}">View Product</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'product' product.id %}">Chi tiết</a></div>
                             </div>
                         </div>
                     </div>
